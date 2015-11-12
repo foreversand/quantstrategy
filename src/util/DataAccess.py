@@ -40,7 +40,6 @@ class DataSource(object):
     NORGATE = "Norgate"
     YAHOO = "Yahoo"
     YAHOOold = "YahooOld"
-    SINA = "Sina"
     COMPUSTAT = "Compustat"
     CUSTOM = "Custom"
     MLT = "ML4Trading"
@@ -78,10 +77,10 @@ class DataAccess(object):
                 if s_scratchpath != None:
                     self.scratchdir = s_scratchpath
                 else:
-                    self.scratchdir = os.path.join(tempfile.gettempdir(), 'QSScratch')
+                    self.scratchdir = os.path.join(tempfile.gettempdir(), 'MyScratch')
             else:
-                self.rootdir = os.path.join(os.path.dirname(__file__), '..', 'QSData')
-                self.scratchdir = os.path.join(tempfile.gettempdir(), 'QSScratch')
+                self.rootdir = os.path.join(os.path.dirname(__file__), '..', 'MyData')
+                self.scratchdir = os.path.join(tempfile.gettempdir(), 'MyScratch')
 
         if verbose:
             print "Scratch Directory: ", self.scratchdir
@@ -127,9 +126,9 @@ class DataAccess(object):
             self.source = DataSource.COMPUSTAT
             self.midPath = "/Processed/Compustat"
             #What if these paths don't exist?
-            self.folderSubList.append("/US/NASDAQ/")
-            self.folderSubList.append("/US/NYSE/")
-            self.folderSubList.append("/US/AMEX/")
+            self.folderSubList.append("/CN/SHSE/")
+            self.folderSubList.append("/CN/SZSE/")
+            self.folderSubList.append("/CN/FUTURE/")
 
             for i in self.folderSubList:
                 self.folderList.append(self.rootdir + self.midPath + i)
